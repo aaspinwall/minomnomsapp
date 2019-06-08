@@ -1,8 +1,6 @@
 import React from "react";
 import "./App.css";
 import recipes from "./data";
-import utility from "./utilityFunctions";
-import UserInput from "./userinput";
 
 class Nav extends React.Component {
   render() {
@@ -18,7 +16,7 @@ let myMeals = recipes.breakfast
   .concat(recipes.dinner)
   .concat(recipes.smoothies);
 
-class MyDay extends React.Component {
+/* class MyDay extends React.Component {
   render() {
     return (
       <div className={"mainContainer"}>
@@ -28,7 +26,7 @@ class MyDay extends React.Component {
       </div>
     );
   }
-}
+} */
 class Filtered extends React.Component {
   constructor(props) {
     super(props);
@@ -73,7 +71,9 @@ class Meal extends React.Component {
     const meal = this.props.meal;
     return (
       <div className='mealContainer'>
-        <img src={meal.img ? meal.img : ""} alt={"whatever"} />
+        <a href='./'>
+          <img src={meal.img ? meal.img : ""} alt={"whatever"} />
+        </a>
         <div>
           <h3>{meal.name.toUpperCase()}</h3>
           <ul>
