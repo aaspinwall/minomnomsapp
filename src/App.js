@@ -6,7 +6,9 @@ class Nav extends React.Component {
   render() {
     return (
       <nav className='navbar'>
-        <img src='imgs/paw.png' alt='paw' />
+        <a href='./'>
+          <img src='imgs/paw.png' alt='paw' />
+        </a>
       </nav>
     );
   }
@@ -53,7 +55,7 @@ class Filtered extends React.Component {
   render() {
     return (
       <div className={"mainContainer"}>
-        <form className={"searchBox"}>
+        <form className={"searchBox"} onSubmit={e => e.preventDefault()}>
           <h3>Filtrar por</h3>
           <label>Ingrediente: </label>
           <input type='text' onChange={this.handleChange} />
@@ -71,9 +73,7 @@ class Meal extends React.Component {
     const meal = this.props.meal;
     return (
       <div className='mealContainer'>
-        <a href='./'>
-          <img src={meal.img ? meal.img : ""} alt={"whatever"} />
-        </a>
+        <img src={meal.img ? meal.img : ""} alt={"whatever"} />
         <div>
           <h3>{meal.name.toUpperCase()}</h3>
           <ul>
