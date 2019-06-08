@@ -52,6 +52,9 @@ class Filtered extends React.Component {
     console.log(reg);
     return reg.test(obj);
   }
+  componentDidMount() {
+    console.log("Mounted");
+  }
   render() {
     return (
       <div className={"mainContainer"}>
@@ -71,6 +74,13 @@ class Filtered extends React.Component {
 class Meal extends React.Component {
   render() {
     const meal = this.props.meal;
+    /*     const styled = {
+      objectFit: "cover",
+      height: "15rem",
+      width: "10rem",
+      borderRadius: "30px",
+      padding: "1rem",
+    }; */
     return (
       <div className='mealContainer'>
         <img src={meal.img ? meal.img : ""} alt={"whatever"} />
