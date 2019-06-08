@@ -1,3 +1,78 @@
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+}
+img {
+  object-fit: cover;
+  height: 15rem;
+  width: 10rem;
+  border-radius: 30px;
+  padding: 1rem;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgb(255, 199, 208);
+  z-index: 999;
+}
+.navbar img {
+  height: 20px;
+  width: auto;
+}
+
+.searchBox {
+  right: 20px;
+  bottom: 0;
+  text-align: left;
+  position: fixed;
+  z-index: 999;
+  background: rgb(255, 199, 208);
+  border: black 1px solid;
+  border-radius: 5px;
+  padding: 0.7rem;
+}
+.searchBox::after {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  color: #282c34;
+  border-radius: 5px;
+  content: "X";
+  font-weight: bold;
+}
+.searchBox h3 {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+}
+.mainContainer {
+  padding-top: 60px;
+  margin: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.mealContainer {
+  display: flex;
+  transition: filter 0.7s ease-in-out;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-color: #2be18325;
+  padding: 0.6rem 0.3rem;
+  margin: 0.3rem;
+  border-radius: 5px;
+}
+.mealContainer:hover {
+  transform: scale(1.01);
+}
+
 .App {
   text-align: center;
 }
@@ -23,11 +98,39 @@
   color: #61dafb;
 }
 
+.ingredientBox {
+  display: block;
+}
+
+#submitButton {
+  display: block;
+  margin: 1rem;
+}
+#addButton {
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (min-width: 765px) {
+  body {
+  }
+  .mainContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  body {
+  }
+  .mainContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
