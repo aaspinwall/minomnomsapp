@@ -89,7 +89,9 @@ img {
   display: block;
   margin: 1rem;
 }
-
+.selected {
+  filter: opacity(0.5);
+}
 @media only screen and (min-width: 765px) {
   body {
   }

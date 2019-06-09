@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import recipes from "./data";
 
+let selectedMeals = [];
+
 class Nav extends React.Component {
   render() {
     return (
@@ -52,9 +54,7 @@ class Filtered extends React.Component {
     console.log(reg);
     return reg.test(obj);
   }
-  componentDidMount() {
-    console.log("Mounted");
-  }
+
   render() {
     return (
       <div className={"mainContainer"}>
@@ -62,6 +62,42 @@ class Filtered extends React.Component {
           <h3>Filtrar por</h3>
           <label>Ingrediente: </label>
           <input type='text' onChange={this.handleChange} />
+          <div>
+            <button
+              onClick={() => {
+                this.meals = recipes.breakfast;
+                this.setState({ filter: "" });
+              }}
+            >
+              Desayunos
+            </button>
+            <button
+              onClick={() => {
+                this.meals = recipes.dinner;
+                this.setState({ filter: "" });
+              }}
+            >
+              Cenas
+            </button>
+            <button
+              onClick={() => {
+                this.meals = recipes.smoothies;
+                this.setState({ filter: "" });
+              }}
+            >
+              Smoothies
+            </button>
+            <button
+              onClick={() => {
+                this.meals = recipes.breakfast
+                  .concat(recipes.dinner)
+                  .concat(recipes.smoothies);
+                this.setState({ filter: "" });
+              }}
+            >
+              Clear
+            </button>
+          </div>
         </form>
         {this.meals.map(meal => (
           <Meal meal={meal} key={"meal-" + meal.name} />
@@ -72,6 +108,25 @@ class Filtered extends React.Component {
 }
 
 class Meal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { className: "mealContainer", selected: false };
+  }
+  select = event => {
+    this.setState(
+      {
+        selected: !this.state.selected,
+      },
+      () => {
+        this.setState({
+          className: this.state.selected
+            ? "mealContainer selected"
+            : "mealContainer",
+        });
+      }
+    );
+    selectedMeals.push(this.props.meal);
+  };
   render() {
     const meal = this.props.meal;
     /*     const styled = {
@@ -82,7 +137,7 @@ class Meal extends React.Component {
       padding: "1rem",
     }; */
     return (
-      <div className='mealContainer'>
+      <div className={this.state.className} onClick={this.select}>
         <img src={meal.img ? meal.img : ""} alt={"whatever"} />
         <div>
           <h3>{meal.name.toUpperCase()}</h3>
@@ -107,11 +162,24 @@ class Meal extends React.Component {
     );
   }
 }
+class Store extends React.Component {
+  render() {
+    console.log(selectedMeals);
+    return (
+      <div>
+        {selectedMeals.map(meal => {
+          return <div>{meal.name}</div>;
+        })}
+      </div>
+    );
+  }
+}
 
 function App() {
   return (
     <div>
       <Nav />
+      <Store />
       <Filtered />
     </div>
   );
