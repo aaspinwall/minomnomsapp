@@ -92,6 +92,12 @@ img {
 .selected {
   filter: opacity(0.5);
 }
+.editmode {
+  padding: 5rem 2rem;
+}
+.hide {
+  display: none;
+}
 @media only screen and (min-width: 765px) {
   body {
   }

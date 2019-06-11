@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import recipes from "./data";
+import { stat } from "fs";
 
 let selectedMeals = [];
 
@@ -18,19 +19,9 @@ class Nav extends React.Component {
 
 let myMeals = recipes.breakfast
   .concat(recipes.dinner)
+  .concat(recipes.lunch)
   .concat(recipes.smoothies);
 
-/* class MyDay extends React.Component {
-  render() {
-    return (
-      <div className={"mainContainer"}>
-        {myMeals.map(meal => (
-          <Meal meal={meal} key={"meal-" + meal.name} />
-        ))}
-      </div>
-    );
-  }
-} */
 class Filtered extends React.Component {
   constructor(props) {
     super(props);
@@ -58,6 +49,7 @@ class Filtered extends React.Component {
   render() {
     return (
       <div className={"mainContainer"}>
+        {/* <Store sendtoGrandparent={this.props.sendtoGrandparent} /> */}
         <form className={"searchBox"} onSubmit={e => e.preventDefault()}>
           <h3>Filtrar por</h3>
           <label>Ingrediente: </label>
@@ -70,6 +62,14 @@ class Filtered extends React.Component {
               }}
             >
               Desayunos
+            </button>
+            <button
+              onClick={() => {
+                this.meals = recipes.lunch;
+                this.setState({ filter: "" });
+              }}
+            >
+              Comidas
             </button>
             <button
               onClick={() => {
@@ -100,7 +100,11 @@ class Filtered extends React.Component {
           </div>
         </form>
         {this.meals.map(meal => (
-          <Meal meal={meal} key={"meal-" + meal.name} />
+          <Meal
+            meal={meal}
+            key={"meal-" + meal.name}
+            sendtoGrandparent={this.props.sendtoGrandparent}
+          />
         ))}
       </div>
     );
@@ -118,6 +122,7 @@ class Meal extends React.Component {
         selected: !this.state.selected,
       },
       () => {
+        this.props.sendtoGrandparent(this.props.meal, this.state.selected);
         this.setState({
           className: this.state.selected
             ? "mealContainer selected"
@@ -129,13 +134,6 @@ class Meal extends React.Component {
   };
   render() {
     const meal = this.props.meal;
-    /*     const styled = {
-      objectFit: "cover",
-      height: "15rem",
-      width: "10rem",
-      borderRadius: "30px",
-      padding: "1rem",
-    }; */
     return (
       <div className={this.state.className} onClick={this.select}>
         <img src={meal.img ? meal.img : ""} alt={"whatever"} />
@@ -162,7 +160,7 @@ class Meal extends React.Component {
     );
   }
 }
-class Store extends React.Component {
+/* class Store extends React.Component {
   render() {
     console.log(selectedMeals);
     return (
@@ -173,16 +171,90 @@ class Store extends React.Component {
       </div>
     );
   }
+} */
+
+class Ingredient extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { ingredient: {} };
+  }
+  handleInput = e => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({ [name]: value });
+  };
+  render() {
+    return (
+      <div>
+        <label>Quantity</label>
+        <input onChange={this.handleInput} name={"quantity"} type='number' />
+        <label>Unit</label>
+        <input onChange={this.handleInput} name={"unit"} />
+        <label>Name</label>
+        <input onChange={this.handleInput} name={"ingredientName"} />
+        <label>Notes</label>
+        <input onChange={this.handleInput} name={"notes"} />
+      </div>
+    );
+  }
 }
 
-function App() {
-  return (
-    <div>
-      <Nav />
-      <Store />
-      <Filtered />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedMeals: [],
+      editMode: false,
+    };
+  }
+
+  handleChange = (meal, flag) => {
+    this.setState(
+      {
+        selectedMeals: flag
+          ? [...selectedMeals].concat([meal])
+          : selectedMeals.filter(mealinlist => {
+              return mealinlist.name === meal.name;
+            }),
+      },
+      () => {
+        //console.log(`Flag is: ${flag} & meal is ${meal.name}`);
+        //console.log(selectedMeals);
+      }
+    );
+  };
+  handleInput = e => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({ [name]: value }, console.log(this.state));
+  };
+
+  render() {
+    return (
+      <div>
+        <Nav />
+        <Filtered sendtoGrandparent={this.handleChange} />
+        <button
+          onClick={e => {
+            e.preventDefault();
+            this.setState({ editMode: true });
+            console.log(this.state.editMode);
+          }}
+        >
+          Add recipe
+        </button>
+        <form className={this.state.editMode ? "editmode" : "hide"}>
+          <label>Recipe name:</label>
+          <input onChange={this.handleInput} name={"name"} />
+          <p>Ingredients:</p>
+          <Ingredient />
+          <button onClick>+</button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default App;

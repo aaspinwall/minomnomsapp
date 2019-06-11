@@ -298,60 +298,183 @@ recipes.breakfast = [
 ];
 recipes.lunch = [
   {
-    name: "",
+    name: "Ensalada de atún",
     ingredients: [
       {
-        name: "",
-        quantity: 0,
+        name: "Atún",
+        quantity: 1,
+        unit: "lata",
+        notes: null,
+      },
+      {
+        name: "Mayonesa",
+        quantity: 2,
+        unit: "cucharadas",
+        notes: null,
+      },
+      {
+        name: "Verduras",
+        quantity: 1,
+        unit: "taza",
+        notes: "Pepinos, espinacas, pimientos",
+      },
+      {
+        name: "Arroz",
+        quantity: 0.3,
+        unit: "taza",
+        notes: null,
+      },
+      {
+        name: "Alejandro: Doble porción",
+      },
+    ],
+    img: "imgs/tunasalad.jpg",
+  },
+
+  {
+    name: "Fajitas de pollo",
+    img: "imgs/chickenfajitas.jpg",
+    ingredients: [
+      {
+        name: "Pollo",
+        quantity: 100,
+        unit: "g",
+        notes: null,
+      },
+      {
+        name: "Verduras",
+        quantity: 1,
+        unit: "taza",
+        notes: "Pimiento, cebolla, champiñones",
+      },
+      {
+        name: "Tortilla de maíz",
+        quantity: 1,
+        unit: null,
+        notes: null,
+      },
+      { name: "Alejandro: Doble porción" },
+    ],
+  },
+  {
+    name: "Salmón a la plancha",
+    img: "imgs/grilledsalmon.jpg",
+    ingredients: [
+      {
+        name: "Salmón",
+        quantity: 100,
+        unit: "g",
+        notes: "Alejandro: come 150 g",
+      },
+      {
+        name: "Calabaza asada",
+        quantity: 1,
         unit: null,
         notes: null,
       },
       {
-        name: "",
-        quantity: 0,
+        name: "Jitomate",
+        quantity: 0.5,
+        unit: null,
+        notes: "Con limón y sal",
+      },
+    ],
+  },
+  {
+    name: "Ensalada primavera",
+    img: "imgs/primavera.jpg",
+    ingredients: [
+      {
+        name: "Queso mozarella",
+        quantity: 60,
+        unit: "g",
+        notes: null,
+      },
+      {
+        name: "Verduras",
+        quantity: 1,
+        unit: "taza",
+        notes: "Espinacas, lechuga y 1 alcachofa",
+      },
+      {
+        name: "Aceitunas",
+        quantity: 6,
         unit: null,
         notes: null,
       },
       {
-        name: "",
-        quantity: 0,
+        name: "Jitomate",
+        quantity: 0.3,
         unit: null,
         notes: null,
       },
       {
-        name: "",
-        quantity: 0,
+        name: "Tortilla",
+        quantity: 1,
         unit: null,
         notes: null,
       },
     ],
   },
   {
-    name: "",
+    name: "Proteína Teriyaki",
+    img: "imgs/teriyaki.jpg",
     ingredients: [
       {
-        name: "",
-        quantity: 0,
+        name: "Pollo o Salmón",
+        quantity: 100,
+        unit: "g",
+        notes:
+          "marinado con 1 cucharada de soya, 1 cucharada de limón, media de maple o miel, jengibre picado",
+      },
+
+      {
+        name: "Verduras",
+        quantity: 1,
+        unit: "taza",
+        notes: null,
+      },
+      {
+        name: "Arroz",
+        quantity: 0.3,
+        unit: "taza",
+        notes: "Alejandro: Doble porción",
+      },
+    ],
+  },
+  {
+    name: "Bacalao a la mexicana",
+    img: "imgs/mexicanafish.jpg",
+    ingredients: [
+      {
+        name: "Bacalao",
+        quantity: 100,
+        unit: "g",
+        notes: "Alejandro: come 150 g",
+      },
+      {
+        name: "Jitomate",
+        quantity: 1,
         unit: null,
         notes: null,
       },
       {
-        name: "",
-        quantity: 0,
+        name: "Cebolla",
+        quantity: 0.3,
         unit: null,
         notes: null,
       },
       {
-        name: "",
-        quantity: 0,
+        name: "Chile",
+        quantity: 1,
         unit: null,
         notes: null,
       },
       {
-        name: "",
-        quantity: 0,
-        unit: null,
-        notes: null,
+        name: "Arroz",
+        quantity: 0.3,
+        unit: "Taza",
+        notes: "Alejandro: Doble porción",
       },
     ],
   },
