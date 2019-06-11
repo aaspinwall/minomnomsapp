@@ -29,6 +29,14 @@ img {
   height: 20px;
   width: auto;
 }
+.pawOpen {
+  transition: transfrom 1s ease-in-out;
+  transform: rotate(180deg);
+}
+.pawClosed {
+  transition: transfrom 1s ease-in-out;
+  transform: rotate(0deg);
+}
 
 .searchBox {
   right: 20px;
@@ -41,7 +49,7 @@ img {
   border-radius: 5px;
   padding: 0.7rem;
 }
-.searchBox::after {
+/* .searchBox::after {
   position: absolute;
   right: 5px;
   top: 0;
@@ -50,6 +58,16 @@ img {
   color: #282c34;
   border-radius: 5px;
   content: "X";
+  font-weight: bold;
+} */
+.searchBoxX {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  color: #282c34;
+  border-radius: 5px;
   font-weight: bold;
 }
 .searchBox h3 {

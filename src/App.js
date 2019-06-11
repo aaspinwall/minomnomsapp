@@ -6,12 +6,19 @@ import { stat } from "fs";
 let selectedMeals = [];
 
 class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { pawState: false };
+  }
   render() {
     return (
       <nav className='navbar'>
-        <a href='./'>
-          <img src='imgs/paw.png' alt='paw' />
-        </a>
+        <img
+          onClick={() => this.setState({ pawState: !this.state.pawState })}
+          className={this.state.pawState ? "pawOpen" : "pawClosed"}
+          src='imgs/paw.png'
+          alt='paw'
+        />
       </nav>
     );
   }
@@ -25,7 +32,7 @@ let myMeals = recipes.breakfast
 class Filtered extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { filtered: "" };
+    this.state = { filtered: "", filterVisibility: true };
     this.meals = myMeals;
   }
   handleChange = event => {
@@ -50,11 +57,24 @@ class Filtered extends React.Component {
     return (
       <div className={"mainContainer"}>
         {/* <Store sendtoGrandparent={this.props.sendtoGrandparent} /> */}
-        <form className={"searchBox"} onSubmit={e => e.preventDefault()}>
+        <form
+          className={this.state.filterVisibility ? "searchBox" : "hide"}
+          onSubmit={e => e.preventDefault()}
+        >
           <h3>Filtrar por</h3>
           <label>Ingrediente: </label>
           <input type='text' onChange={this.handleChange} />
           <div>
+            <button
+              onClick={() => {
+                this.setState({
+                  filterVisibility: !this.state.filterVisibility,
+                });
+              }}
+              className='searchBoxX'
+            >
+              X
+            </button>
             <button
               onClick={() => {
                 this.meals = recipes.breakfast;
