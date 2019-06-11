@@ -1,3 +1,7 @@
+* {
+  box-sizing: content-box;
+}
+
 body {
   font-family: "Roboto", sans-serif;
 }
@@ -29,12 +33,13 @@ img {
   height: 20px;
   width: auto;
 }
+.paw {
+  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
 .pawOpen {
-  transition: transfrom 1s ease-in-out;
   transform: rotate(180deg);
 }
 .pawClosed {
-  transition: transfrom 1s ease-in-out;
   transform: rotate(0deg);
 }
 
@@ -49,17 +54,9 @@ img {
   border-radius: 5px;
   padding: 0.7rem;
 }
-/* .searchBox::after {
-  position: absolute;
-  right: 5px;
-  top: 0;
-  font-size: 0.7rem;
-  padding: 0.3rem;
-  color: #282c34;
-  border-radius: 5px;
-  content: "X";
-  font-weight: bold;
-} */
+.searchBox button {
+  margin-top: 1rem;
+}
 .searchBoxX {
   position: absolute;
   right: 5px;
@@ -69,6 +66,8 @@ img {
   color: #282c34;
   border-radius: 5px;
   font-weight: bold;
+  background: transparent;
+  border-color: transparent;
 }
 .searchBox h3 {
   font-size: 1rem;
@@ -83,7 +82,8 @@ img {
 }
 
 .mealContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   transform-origin: center;
   transition: filter 0.7s ease-in-out;
   transition: transform 0.5s ease-in-out;

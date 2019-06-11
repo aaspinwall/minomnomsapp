@@ -15,7 +15,7 @@ class Nav extends React.Component {
       <nav className='navbar'>
         <img
           onClick={() => this.setState({ pawState: !this.state.pawState })}
-          className={this.state.pawState ? "pawOpen" : "pawClosed"}
+          className={this.state.pawState ? "paw pawOpen" : "paw pawClosed"}
           src='imgs/paw.png'
           alt='paw'
         />
