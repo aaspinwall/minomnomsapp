@@ -25,8 +25,8 @@ class Nav extends React.Component {
 }
 
 let myMeals = recipes.breakfast
-  .concat(recipes.dinner)
   .concat(recipes.lunch)
+  .concat(recipes.dinner)
   .concat(recipes.smoothies);
 
 class Filtered extends React.Component {
