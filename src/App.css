@@ -5,7 +5,10 @@
 body {
   font-family: "Roboto", sans-serif;
 }
-
+a:visited,
+a:link {
+  color: black;
+}
 ul {
   margin: 0;
   padding: 0;
@@ -22,6 +25,7 @@ img {
   border-radius: 30px;
   padding: 1rem;
 }
+
 .navbar {
   position: fixed;
   top: 0;
@@ -33,6 +37,20 @@ img {
   height: 20px;
   width: auto;
 }
+.navbar > div,
+.navOpen,
+.navOpen a {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 100%;
+}
+.navClosed {
+  display: none;
+}
+
 .paw {
   transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
 }

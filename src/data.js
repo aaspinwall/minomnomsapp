@@ -1,4 +1,4 @@
-let recipes = {};
+const recipes = {};
 
 recipes.breakfast = [
   {
@@ -725,4 +725,9 @@ recipes.empty = [
   },
 ];
 
-export default recipes;
+const myMeals = recipes.breakfast
+  .concat(recipes.lunch)
+  .concat(recipes.dinner)
+  .concat(recipes.smoothies);
+
+export { recipes, myMeals };
