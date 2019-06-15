@@ -73,7 +73,6 @@ img {
   padding: 0.7rem;
 }
 .searchBox button {
-  margin-top: 1rem;
 }
 .searchBoxX {
   position: absolute;
@@ -136,7 +135,7 @@ img {
 }
 @media only screen and (max-width: 362px) {
   h3 {
-    font-size: 1rem;
+    font-size: 0.6rem;
   }
   button {
     font-size: 0.5rem;
@@ -145,7 +144,10 @@ img {
   a,
   li,
   ul {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+  }
+  .mainContainer {
+    margin: 0;
   }
   .mealContainer img {
     object-fit: cover;
@@ -156,6 +158,7 @@ img {
   }
   .searchBox {
     display: flex;
+    justify-content: space-evenly;
     flex-direction: column;
   }
   .searchBox h3,
@@ -171,6 +174,9 @@ img {
   .searchBoxX {
     padding: 0;
     font-size: 0.2rem;
+  }
+  .mealContainer div {
+    padding: 0;
   }
 }
 @media only screen and (min-width: 765px) {
