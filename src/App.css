@@ -134,6 +134,45 @@ img {
 .hide {
   display: none;
 }
+@media only screen and (max-width: 362px) {
+  h3 {
+    font-size: 1rem;
+  }
+  button {
+    font-size: 0.5rem;
+  }
+  div,
+  a,
+  li,
+  ul {
+    font-size: 0.7rem;
+  }
+  .mealContainer img {
+    object-fit: cover;
+    height: 9rem;
+    width: 6rem;
+    border-radius: 30px;
+    padding: 1rem;
+  }
+  .searchBox {
+    display: flex;
+    flex-direction: column;
+  }
+  .searchBox h3,
+  .searchBox label,
+  .searchBox input {
+    display: none;
+  }
+  .searchBox button {
+    margin: 0;
+    background: none;
+    border: 0;
+  }
+  .searchBoxX {
+    padding: 0;
+    font-size: 0.2rem;
+  }
+}
 @media only screen and (min-width: 765px) {
   body {
   }
