@@ -5,7 +5,7 @@ import { portions } from "./data";
 export default class Portions extends React.Component {
   constructor() {
     super();
-    this.state = { verduras: false, cereales: false, grasas: false };
+    this.state = { verduras: true, cereales: true, grasas: true };
   }
   componentDidMount() {}
   render() {
@@ -32,6 +32,7 @@ export default class Portions extends React.Component {
       @media screen and (min-width: 768px) {
         padding: 0 1rem;
         display: flex;
+        justify-content: space-evenly;
       }
     `;
     const BoxHeader = styled(BoxContainer)`
