@@ -5,7 +5,7 @@ import { portions } from "./data";
 export default class Portions extends React.Component {
   constructor() {
     super();
-    this.state = { verduras: true, cereales: true, grasas: true };
+    this.state = {};
   }
   componentDidMount() {}
   render() {
