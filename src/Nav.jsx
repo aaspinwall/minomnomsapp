@@ -6,6 +6,9 @@ class Nav extends React.Component {
     super(props);
     this.state = { pawState: false };
   }
+  close = () => {
+    this.setState({ pawState: false });
+  };
   render() {
     const menuState = this.state.pawState ? "navOpen" : "navClosed ";
     return (
@@ -17,10 +20,10 @@ class Nav extends React.Component {
           alt='paw'
         />
         <div>
-          <Link className={menuState} to='/'>
+          <Link onClick={this.close} className={menuState} to='/'>
             Home
           </Link>
-          <Link className={menuState} to='/portions'>
+          <Link onClick={this.close} className={menuState} to='/portions'>
             Porciones
           </Link>
 
