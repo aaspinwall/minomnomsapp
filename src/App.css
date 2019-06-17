@@ -37,7 +37,7 @@ img {
   height: 20px;
   width: auto;
 }
-.navbar > div,
+
 .navOpen,
 .navOpen a {
   font-size: 2rem;
@@ -45,6 +45,8 @@ img {
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  flex-direction: column;
+  padding: 1rem 0;
   width: 100%;
 }
 .navClosed {
