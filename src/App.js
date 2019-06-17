@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Nav from "./Nav";
 import Filtered from "./Filtered";
 import Ingredient from "./Ingredient";
 
@@ -23,7 +22,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
         <Filtered sendtoGrandparent={this.handleChange} />
         <button
           onClick={e => {

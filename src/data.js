@@ -725,9 +725,77 @@ recipes.empty = [
   },
 ];
 
+let portions = {
+  verduras: [
+    `Libres: acelga, apio, berenjena,
+  berros, calabaza,
+  champiñones, coliflor, col,
+  espárragos, espinaca, germen
+  de alfalfa, flor de calabaza,
+  jitomate, lechuga, nopales,
+  pepino, pimiento, rábanos,
+  tomate, verdolagas. `,
+    `½ taza: ejotes, brócoli, cebolla,
+  chayote, chile poblano, col de
+  Bruselas. Moderar consumo*:
+  zanahoria, jícama y betabel. `,
+  ],
+  cereales: [
+    "Adriana 1 / Alejandro 2",
+    "1 tortilla de maíz",
+    "1/3 de taza de arroz integral.",
+    "1/3 de taza de quinoa cocida.",
+    "1/3 de taza de cous cous.",
+    "1 paquete de galletas Salmas.",
+    "1/3 de taza de frijol.",
+    "1/3 de taza de lenteja.",
+    "1/3 de taza de habas",
+    "1/3 de taza de chícharos",
+    "1/3 de taza de soya cocida.",
+    "1/3 de taza de granos de elote.",
+    "1 tostada Sanissimo.",
+  ],
+  animal: [
+    "Adriana 1 / Alejandro 1.5",
+    "100g pechuga de pollo.",
+    "100g pescado (blanco, salmón o atún).",
+    "100g carne de res magra",
+    "1 sobre de atún en agua",
+    "60g de queso feta o queso mozzarella.",
+    "40g de queso de cabra.",
+    "3 rebanadas de salmón ahumado",
+    "6 camarones",
+    "100g de pechuga de pavo.",
+    "2 barritas de surimi.",
+    "2 salchichas de pavo.",
+  ],
+  grasas: [
+    "Adriana 2 / Alejandro 4",
+    "1 cdita. aceite para cocinar",
+    "1/3 de aguacate",
+    "1 cda. de vinagreta casera.",
+    "10 almendras o 15 cacahuates",
+    "20 pepitas o 4 nueces o 6 nueces de la india.",
+    "6 aceitunas.",
+    "1/3 de aguacate.",
+    "1 cucharada de mayonesa",
+    "1 cucharada de aderezo tipo vinagreta.",
+    "1 cuadrito de mantequilla.",
+  ],
+  bebidas: [
+    "Agua natural.",
+    "Agua de Jamaica sin azúcar ni endulzantes.",
+    "Agua de limón sin azúcar ni endulzantes.",
+    "Agua de pepino sin azúcar ni endulzantes.",
+    "Agua de tamarindo sin azúcar ni endulzantes.",
+    "Hasta 3 tazas al día de té o café sin azúcar.",
+    "Infusiones sin azúcar ni endulzantes. ",
+  ],
+};
+
 const myMeals = recipes.breakfast
   .concat(recipes.lunch)
   .concat(recipes.dinner)
   .concat(recipes.smoothies);
 
-export { recipes, myMeals };
+export { recipes, myMeals, portions };
