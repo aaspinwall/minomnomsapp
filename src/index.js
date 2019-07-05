@@ -13,8 +13,8 @@ const Test = function() {
 
 ReactDOM.render(
   <Router>
+    <Nav />
     <Route path='/' exact={true} component={App} />
-    <Route path='/' exact={false} component={Nav} />
     <Route path='/portions' exact={true} component={Portions} />
   </Router>,
   document.getElementById("root")

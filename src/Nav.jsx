@@ -27,7 +27,7 @@ class Nav extends React.Component {
             Porciones
           </Link>
 
-          <a className={menuState} href='/menus.pdf'>
+          <a className={menuState} href='/menus2.pdf'>
             PDF
           </a>
         </div>
