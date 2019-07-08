@@ -3,6 +3,19 @@ import { recipes, myMeals } from "./data";
 import Meal from "./Meal";
 import styled from "styled-components";
 
+const MealWrapper = styled.div`
+  margin: 4rem 0 6rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media screen and (min-width: 765px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
 const Search = styled.input`
   position: fixed;
   width: 83%;
@@ -27,15 +40,23 @@ const Search = styled.input`
 
 const FilterBox = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   position: fixed;
   bottom: 0;
   width: 100vw;
+  z-index: 999;
+
+  @media screen and (max-width: 362px) {
+    justify-content: center;
+  }
 `;
 
 const FilterButton = styled.button`
   border-radius: 10px;
   padding: 1rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
 `;
 
 class Filtered extends React.Component {
@@ -71,23 +92,11 @@ class Filtered extends React.Component {
           onChange={this.handleChange}
           value={this.state.filtered}
         />
-        <form
-        /*           className={this.state.filterVisibility ? "searchBox" : "hide"}
-          onSubmit={e => e.preventDefault()} */
-        >
+        <form>
           <FilterBox>
-            {/*             <FilterButton
-              onClick={() => {
-                this.setState({
-                  filterVisibility: !this.state.filterVisibility,
-                });
-              }}
-              className='searchBoxX'
-            >
-              X
-            </FilterButton> */}
             <FilterButton
-              onClick={() => {
+              onClick={e => {
+                e.preventDefault();
                 this.meals = recipes.breakfast;
                 this.setState({ filter: "" });
               }}
@@ -95,7 +104,8 @@ class Filtered extends React.Component {
               Desayunos
             </FilterButton>
             <FilterButton
-              onClick={() => {
+              onClick={e => {
+                e.preventDefault();
                 this.meals = recipes.lunch;
                 this.setState({ filter: "" });
               }}
@@ -103,7 +113,8 @@ class Filtered extends React.Component {
               Comidas
             </FilterButton>
             <FilterButton
-              onClick={() => {
+              onClick={e => {
+                e.preventDefault();
                 this.meals = recipes.dinner;
                 this.setState({ filter: "" });
               }}
@@ -111,7 +122,8 @@ class Filtered extends React.Component {
               Cenas
             </FilterButton>
             <FilterButton
-              onClick={() => {
+              onClick={e => {
+                e.preventDefault();
                 this.meals = recipes.smoothies;
                 this.setState({ filter: "" });
               }}
@@ -119,7 +131,8 @@ class Filtered extends React.Component {
               Smoothies
             </FilterButton>
             <FilterButton
-              onClick={() => {
+              onClick={e => {
+                e.preventDefault();
                 this.meals = recipes.breakfast
                   .concat(recipes.dinner)
                   .concat(recipes.smoothies);
@@ -130,9 +143,11 @@ class Filtered extends React.Component {
             </FilterButton>
           </FilterBox>
         </form>
-        {this.meals.map(meal => (
-          <Meal meal={meal} key={"meal-" + meal.name} />
-        ))}
+        <MealWrapper>
+          {this.meals.map(meal => (
+            <Meal meal={meal} key={"meal-" + meal.name} />
+          ))}
+        </MealWrapper>
       </div>
     );
   }

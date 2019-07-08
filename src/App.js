@@ -23,22 +23,6 @@ class App extends React.Component {
     return (
       <div>
         <Filtered sendtoGrandparent={this.handleChange} />
-        <button
-          onClick={e => {
-            e.preventDefault();
-            this.setState({ editMode: true });
-            console.log(this.state.editMode);
-          }}
-        >
-          Add recipe
-        </button>
-        <form className={this.state.editMode ? "editmode" : "hide"}>
-          <label>Recipe name:</label>
-          <input onChange={this.handleInput} name={"name"} />
-          <p>Ingredients:</p>
-          <Ingredient />
-          <button onClick>+</button>
-        </form>
       </div>
     );
   }
