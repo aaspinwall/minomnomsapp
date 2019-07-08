@@ -1,53 +1,23 @@
 import React from "react";
 import { recipes, myMeals } from "./data";
 import Meal from "./Meal";
-import styled from "styled-components";
-
-const Search = styled.input`
-  position: fixed;
-  width: 83%;
-  margin: 1rem 60px;
-  left: 0;
-  top: 0;
-  height: 22px;
-
-  background: transparent;
-  z-index: 999;
-
-  /*   @media screen and (min-width: 1024px) {
-    width: 100%;
-  } */
-  @media screen and (min-width: 765px) {
-    width: 88%;
-  }
-  @media screen and (max-width: 362px) {
-    width: 72%;
-  }
-`;
-
-const FilterBox = styled.div`
-  display: flex;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-`;
-
-const FilterButton = styled.button`
-  border-radius: 10px;
-  padding: 1rem;
-`;
+import { connect } from "react-redux";
 
 class Filtered extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { filtered: "", filterVisibility: true };
+    this.state = {
+      filtered: "",
+      filterVisibility: true,
+      filteredMeals: myMeals,
+    };
     this.meals = myMeals;
   }
-
+  componentDidMount() {
+    console.log(this.props);
+  }
   handleChange = event => {
-    this.setState({ filtered: event.target.value });
-    this.meals = myMeals.filter(
+    let filteredMeals = myMeals.filter(
       mealObj =>
         mealObj.ingredients.some(
           ingredient =>
@@ -55,6 +25,11 @@ class Filtered extends React.Component {
             this.find(event.target.value, ingredient.notes)
         ) || this.find(event.target.value, mealObj.name)
     );
+    this.setState({
+      filtered: event.target.value,
+      filteredMeals: filteredMeals,
+    });
+    this.props.handleFilter();
   };
 
   find(query, obj) {
@@ -65,18 +40,16 @@ class Filtered extends React.Component {
 
   render() {
     return (
-      <div>
-        <Search
-          type='text'
-          onChange={this.handleChange}
-          value={this.state.filtered}
-        />
+      <div className={"mainContainer"}>
         <form
-        /*           className={this.state.filterVisibility ? "searchBox" : "hide"}
-          onSubmit={e => e.preventDefault()} */
+          className={this.state.filterVisibility ? "searchBox" : "hide"}
+          onSubmit={e => e.preventDefault()}
         >
-          <FilterBox>
-            {/*             <FilterButton
+          <h3>Filtrar por</h3>
+          <label>Ingrediente: </label>
+          <input type='text' onChange={this.handleChange} />
+          <div>
+            <button
               onClick={() => {
                 this.setState({
                   filterVisibility: !this.state.filterVisibility,
@@ -85,40 +58,40 @@ class Filtered extends React.Component {
               className='searchBoxX'
             >
               X
-            </FilterButton> */}
-            <FilterButton
+            </button>
+            <button
               onClick={() => {
                 this.meals = recipes.breakfast;
                 this.setState({ filter: "" });
               }}
             >
               Desayunos
-            </FilterButton>
-            <FilterButton
+            </button>
+            <button
               onClick={() => {
                 this.meals = recipes.lunch;
                 this.setState({ filter: "" });
               }}
             >
               Comidas
-            </FilterButton>
-            <FilterButton
+            </button>
+            <button
               onClick={() => {
                 this.meals = recipes.dinner;
                 this.setState({ filter: "" });
               }}
             >
               Cenas
-            </FilterButton>
-            <FilterButton
+            </button>
+            <button
               onClick={() => {
                 this.meals = recipes.smoothies;
                 this.setState({ filter: "" });
               }}
             >
               Smoothies
-            </FilterButton>
-            <FilterButton
+            </button>
+            <button
               onClick={() => {
                 this.meals = recipes.breakfast
                   .concat(recipes.dinner)
@@ -127,10 +100,10 @@ class Filtered extends React.Component {
               }}
             >
               Clear
-            </FilterButton>
-          </FilterBox>
+            </button>
+          </div>
         </form>
-        {this.meals.map(meal => (
+        {this.state.filteredMeals.map(meal => (
           <Meal meal={meal} key={"meal-" + meal.name} />
         ))}
       </div>
@@ -138,4 +111,19 @@ class Filtered extends React.Component {
   }
 }
 
-export default Filtered;
+let mapStateToProps = st => {
+  return {
+    counter: st.counter,
+    meals: st.meals,
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  handleFilter: evt =>
+    dispatch({ type: "DISPLAYED_MEALS", meals: this.state.filteredMeals }),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Filtered);

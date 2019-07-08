@@ -6,17 +6,17 @@ import Nav from "./Nav";
 import Portions from "./Portions";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-const Test = function() {
-  return <div>Hello</div>;
-};
+import { Provider } from "react-redux";
+import store from "./store";
 
 ReactDOM.render(
-  <Router>
-    <Nav />
-    <Route path='/' exact={true} component={App} />
-    <Route path='/portions' exact={true} component={Portions} />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <Nav />
+      <Route path='/' exact={true} component={App} />
+      <Route path='/portions' exact={true} component={Portions} />
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
 
