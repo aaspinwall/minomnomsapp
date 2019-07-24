@@ -575,7 +575,7 @@ recipes.dinner = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/width/500/foil1.webp-lossy-100/https://mynomnoms.netlify.com/imgs/caprese.jpg",
+      "https://akvuseeben.cloudimg.io/width/500/foil1.webp-lossy-100/https://mynomnoms.netlify.com/imgs/caprese1.jpg",
   },
   {
     name: "Pimientos con feta",
