@@ -1,9 +1,9 @@
 import React from "react";
-let selectedMeals = [];
+import utility from "./utilityFunctions";
 class Meal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { className: "mealContainer", selected: false };
+    this.state = { className: "mealContainer" };
   }
   render() {
     const meal = this.props.meal;
@@ -22,8 +22,12 @@ class Meal extends React.Component {
                   ${ingredient.unit ? ingredient.unit : ""} `}
                   </b>
                   {`
-                  ${ingredient.name}
-                  ${ingredient.notes ? ingredient.notes : ""}`}
+                  ${utility.capitalizeFirst(ingredient.name)}
+                  ${
+                    ingredient.notes
+                      ? utility.capitalizeFirst(ingredient.notes)
+                      : ""
+                  }`}
                 </li>
               );
             })}

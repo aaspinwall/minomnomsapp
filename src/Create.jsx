@@ -6,28 +6,65 @@ import MealTemplate from "./MealTemplate";
 class Create extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: "", ingredients: [], cnt: 1, userIngredients: {} };
+    this.state = {
+      name: "",
+      ingredients: [],
+      cnt: 1,
+      newRecipe: { name: "", ingredients: [{}] },
+    };
   }
   addField = () => {
-    this.setState({ cnt: this.state.cnt + 1 });
+    this.setState({
+      cnt: this.state.cnt + 1,
+      newRecipe: {
+        ...this.state.newRecipe,
+        ingredients: this.state.newRecipe.ingredients.concat({}),
+      },
+    });
   };
 
-  userInput = e => {
-    const name = e.target.name;
-    const value = e.target.value;
-    const i = name[name.length - 1];
-    this.setState(
-      { userIngredients: { ...this.state.userIngredients, [name]: value } },
-      () => {
-        console.log(this.state.userIngredients);
-      }
-    );
-  };
   removeField = e => {
     const name = e.target.name;
-    const value = e.target.value;
-    const i = name[name.length - 1];
-    console.log(e.target);
+    const i = Number(name);
+    this.setState({
+      newRecipe: {
+        ...this.state.newRecipe,
+        ingredients: this.state.newRecipe.ingredients.filter(
+          (ingredient, j) => {
+            return i !== j;
+          }
+        ),
+      },
+    });
+  };
+  handleChange = e => {
+    let value = e.target.value;
+    const name = e.target.name;
+    const index = Number(name.split("_")[1]);
+    const type = name.split("_")[0];
+    //check for empty values
+    value = value === "none" ? null : value;
+
+    if (name === "name") {
+      this.setState(
+        { newRecipe: { ...this.state.newRecipe, name: value } },
+        () => console.log(this.state.newRecipe)
+      );
+    } else {
+      this.setState(
+        {
+          newRecipe: {
+            name: this.state.newRecipe.name,
+            ingredients: this.state.newRecipe.ingredients.map((recipe, i) => {
+              if (i === index) {
+                return { ...recipe, [type]: value };
+              } else return recipe;
+            }),
+          },
+        },
+        () => console.log(this.state.newRecipe)
+      );
+    }
   };
   ingredients = () => {
     let res = [];
@@ -39,12 +76,17 @@ class Create extends React.Component {
           <Input
             type='number'
             className='amount'
-            name={"amount_" + index}
+            name={"quantity_" + index}
             min='0'
-            onChange={this.userInput}
+            value={this.state.newRecipe.ingredients[index].quantity}
+            onChange={this.handleChange}
           />
           <div>Unit</div>
-          <Select name={"unit_" + index} onChange={this.userInput}>
+          <Select
+            name={"unit_" + index}
+            value={this.state.newRecipe.ingredients[index].unit}
+            onChange={this.handleChange}
+          >
             <option>none</option>
             <option disabled={true}>----</option>
             <option>g</option>
@@ -58,12 +100,20 @@ class Create extends React.Component {
           <div className='label'>Ingredient</div>
           <Input
             type='text'
-            name={"ingredient_" + index}
-            onChange={this.userInput}
+            name={"name_" + index}
+            value={this.state.newRecipe.ingredients[index].name}
+            onChange={this.handleChange}
           />
           <div className='label'>Notes</div>
-          <Input type='text' name={"note_" + index} onChange={this.userInput} />
-          <button onClick={this.removeField}>Remove</button>
+          <Input
+            type='text'
+            name={"notes_" + index}
+            value={this.state.newRecipe.ingredients[index].notes}
+            onChange={this.handleChange}
+          />
+          <button name={index} onClick={this.removeField}>
+            Remove
+          </button>
         </Ingredient>
       );
     }
@@ -72,10 +122,14 @@ class Create extends React.Component {
   render() {
     return (
       <Wrapper className='wrapper'>
-        <MealTemplate meal={mealSample} />
+        <MealTemplate meal={{ ...this.state.newRecipe, img: "" }} />
         <Title>
           <h4>Recipe Name</h4>
-          <Input />
+          <Input
+            name='name'
+            value={this.state.newRecipe.name}
+            onChange={this.handleChange}
+          />
         </Title>
         {this.ingredients()}
         <button onClick={this.addField}>Add</button>

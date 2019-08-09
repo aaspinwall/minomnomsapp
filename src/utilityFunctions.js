@@ -5,6 +5,15 @@ const utility = {
     let reg = new RegExp(query);
     return reg.test(str.name);
   },
+  capitalizeFirst(str) {
+    if (str) {
+      let arr = str.split("");
+      arr[0] = arr[0].toUpperCase();
+      return arr.join("");
+    } else {
+      return "";
+    }
+  },
 };
 
 export default utility;
