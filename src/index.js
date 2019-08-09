@@ -8,11 +8,13 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
+import Login from "./Login";
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Nav />
+      <Route path='/' exact={true} component={Login} />
       <Route path='/' exact={true} component={App} />
       <Route path='/portions' exact={true} component={Portions} />
     </Router>
