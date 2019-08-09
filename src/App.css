@@ -26,43 +26,6 @@ img {
   padding: 1rem;
 }
 
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgb(255, 199, 208);
-  z-index: 999;
-}
-.navbar img {
-  height: 20px;
-  width: auto;
-}
-
-.navOpen,
-.navOpen a {
-  font-size: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  flex-direction: column;
-  padding: 1rem 0;
-  width: 100%;
-}
-.navClosed {
-  display: none;
-}
-
-.paw {
-  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
-}
-.pawOpen {
-  transform: rotate(180deg);
-}
-.pawClosed {
-  transform: rotate(0deg);
-}
-
 .searchBox {
   right: 20px;
   bottom: 0;
@@ -73,8 +36,6 @@ img {
   border: black 1px solid;
   border-radius: 5px;
   padding: 0.7rem;
-}
-.searchBox button {
 }
 .searchBoxX {
   position: absolute;

@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import Login from "./Login";
+import Create from "./Create";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Route path='/' exact={true} component={Login} />
       <Route path='/' exact={true} component={App} />
       <Route path='/portions' exact={true} component={Portions} />
+      <Route path='/create' exact={true} component={Create} />
     </Router>
   </Provider>,
   document.getElementById("root")

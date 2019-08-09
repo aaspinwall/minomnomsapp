@@ -2,62 +2,7 @@ import React from "react";
 import { recipes, myMeals } from "./data";
 import Meal from "./Meal";
 import styled from "styled-components";
-
-const MealWrapper = styled.div`
-  margin: 4rem 0 6rem 0;
-  display: grid;
-  grid-template-columns: 1fr;
-
-  @media screen and (min-width: 765px) {
-    grid-template-columns: 1fr 1fr;
-  }
-  @media screen and (min-width: 1024px) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-`;
-
-const Search = styled.input`
-  position: fixed;
-  width: 83%;
-  margin: 1rem 60px;
-  left: 0;
-  top: 0;
-  height: 22px;
-
-  background: transparent;
-  z-index: 999;
-
-  /*   @media screen and (min-width: 1024px) {
-    width: 100%;
-  } */
-  @media screen and (min-width: 765px) {
-    width: 88%;
-  }
-  @media screen and (max-width: 362px) {
-    width: 72%;
-  }
-`;
-
-const FilterBox = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  z-index: 999;
-
-  @media screen and (max-width: 362px) {
-    justify-content: center;
-  }
-`;
-
-const FilterButton = styled.button`
-  border-radius: 10px;
-  padding: 1rem;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
-`;
+import { connect } from "react-redux";
 
 class Filtered extends React.Component {
   constructor(props) {
@@ -153,4 +98,77 @@ class Filtered extends React.Component {
   }
 }
 
-export default Filtered;
+const MealWrapper = styled.div`
+  margin: 4rem 0 6rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media screen and (min-width: 765px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+`;
+
+const Search = styled.input`
+  position: fixed;
+  width: 83%;
+  margin: 1rem 60px;
+  left: 0;
+  top: 0;
+  height: 22px;
+
+  background: transparent;
+  z-index: 999;
+
+  /*   @media screen and (min-width: 1024px) {
+    width: 100%;
+  } */
+  @media screen and (min-width: 765px) {
+    width: 88%;
+  }
+  @media screen and (max-width: 362px) {
+    width: 72%;
+  }
+`;
+
+const FilterBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  z-index: 999;
+
+  @media screen and (max-width: 362px) {
+    justify-content: center;
+  }
+`;
+
+const FilterButton = styled.button`
+  border-radius: 10px;
+  padding: 1rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+`;
+
+//export default Filtered;
+
+let mapStateToProps = st => {
+  return {
+    counter: st.counter,
+    meals: st.meals,
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  handleFilter: evt =>
+    dispatch({ type: "DISPLAYED_MEALS", meals: this.state.filteredMeals }),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Filtered);
