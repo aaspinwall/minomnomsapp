@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Login from "./Login";
 import Create from "./Create";
+import Menus from "./Menus";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -19,6 +20,7 @@ ReactDOM.render(
       <Route path='/' exact={true} component={App} />
       <Route path='/portions' exact={true} component={Portions} />
       <Route path='/create' exact={true} component={Create} />
+      <Route path='/menus' exact={true} component={Menus} />
     </Router>
   </Provider>,
   document.getElementById("root")

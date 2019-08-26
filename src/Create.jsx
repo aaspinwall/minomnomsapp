@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import MealTemplate from "./MealTemplate";
+import { format } from "util";
 
 class Create extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class Create extends React.Component {
       ingredients: [],
       cnt: 1,
       newRecipe: { name: "", ingredients: [{}] },
+      fetchedImages: "imgs/chopped.jpg",
     };
   }
   addField = () => {
@@ -68,7 +70,11 @@ class Create extends React.Component {
   };
   ingredients = () => {
     let res = [];
-    for (let index = 0; index < this.state.cnt; index++) {
+    for (
+      let index = 0;
+      index < this.state.newRecipe.ingredients.length;
+      index++
+    ) {
       res.push(
         <Ingredient className='ingredient'>
           <h4>Ingredient #{index + 1}</h4>
@@ -119,10 +125,35 @@ class Create extends React.Component {
     }
     return res;
   };
+  submit = e => {
+    let formData = new FormData();
+    formData.append("myImage", this.state.image);
+    e.preventDefault();
+    fetch("/image", {
+      // Your POST endpoint
+      method: "POST",
+      body: formData, // This is your file object
+    })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ fetchedImages: res.response[0] });
+      });
+  };
+  getImages = async () => {
+    const response = await fetch("images");
+    const body = await response.json();
+    const array = await body.response;
+    console.log(this.state.fetchedImages);
+  };
+
   render() {
     return (
       <Wrapper className='wrapper'>
-        <MealTemplate meal={{ ...this.state.newRecipe, img: "" }} />
+        <h2>Add a new meal</h2>
+        <MealTemplate
+          meal={{ ...this.state.newRecipe, img: this.state.fetchedImages }}
+        />
+
         <Title>
           <h4>Recipe Name</h4>
           <Input
@@ -131,10 +162,18 @@ class Create extends React.Component {
             onChange={this.handleChange}
           />
         </Title>
+        <UploadForm
+          type='file'
+          id='upload'
+          onChange={e =>
+            this.setState({ image: e.target.files[0] }, () => {
+              console.log(this.state.image);
+            })
+          }
+        />
         {this.ingredients()}
         <button onClick={this.addField}>Add</button>
-        <button>Preview</button>
-        <button>Submit</button>
+        <button onClick={this.submit}>Submit</button>
       </Wrapper>
     );
   }
@@ -223,6 +262,32 @@ const Input = styled.input`
   border-radius: 4px;
 `;
 
+const UploadForm = styled.input`
+  ::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  ::before {
+    content: "Add an image";
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+  }
+  :hover::before {
+    border-color: black;
+  }
+  :active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+`;
 const Select = styled.select`
   text-align: left;
   width: 100%;

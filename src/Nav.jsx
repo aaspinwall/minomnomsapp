@@ -33,6 +33,9 @@ class Nav extends React.Component {
           <Link onClick={this.close} className={menuState} to='/create'>
             Create
           </Link>
+          <Link onClick={this.close} className={menuState} to='/Menus'>
+            Menus
+          </Link>
         </div>
       </Navbar>
     );
