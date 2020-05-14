@@ -37,7 +37,7 @@ recipes.breakfast = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/eggspinach.jpg?width=272&force_format=webp",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/eggspinach.jpg?width=272&force_format=webpforce_format=webp",
   },
   {
     name: "Pan tostado con salmón",
@@ -82,7 +82,7 @@ recipes.breakfast = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/salmontoast.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/salmontoast.jpg?width=272&force_format=webp",
   },
   {
     name: "Huevo revuelto con verdura",
@@ -107,7 +107,7 @@ recipes.breakfast = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/veggieeggs.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/veggieeggs.jpg?width=272&force_format=webp",
   },
   {
     name: "Wrap de lechuga",
@@ -156,7 +156,7 @@ recipes.breakfast = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/lettucewrap.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/lettucewrap.jpg?width=272&force_format=webp",
   },
   {
     name: "Salchichas con verduras",
@@ -193,7 +193,7 @@ recipes.breakfast = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/veggiesausages.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/veggiesausages.jpg?width=272&force_format=webp",
   },
   {
     name: "Ejotes con feta",
@@ -236,7 +236,7 @@ recipes.breakfast = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/fetabeans.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/fetabeans.jpg?width=272&force_format=webp",
   },
   {
     name: "Huevo revuelto con jamón",
@@ -273,7 +273,7 @@ recipes.breakfast = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/hameggs.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/hameggs.jpg?width=272&force_format=webp",
   },
   {
     name: "Salmas con hummus",
@@ -322,7 +322,7 @@ recipes.breakfast = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/hummuscracker.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/hummuscracker.jpg?width=272&force_format=webp",
   },
 ];
 recipes.lunch = [
@@ -358,13 +358,13 @@ recipes.lunch = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/tunasalad.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/tunasalad.jpg?width=272&force_format=webp",
   },
 
   {
     name: "Fajitas de pollo",
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/chickenfajitas.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/chickenfajitas.jpg?width=272&force_format=webp",
     ingredients: [
       {
         name: "Pollo",
@@ -390,7 +390,7 @@ recipes.lunch = [
   {
     name: "Salmón a la plancha",
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/grilledsalmon.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/grilledsalmon.jpg?width=272&force_format=webp",
     ingredients: [
       {
         name: "Salmón",
@@ -415,7 +415,7 @@ recipes.lunch = [
   {
     name: "Ensalada primavera",
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/primavera.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/primavera.jpg?width=272&force_format=webp",
     ingredients: [
       {
         name: "Queso mozarella",
@@ -452,7 +452,7 @@ recipes.lunch = [
   {
     name: "Proteína Teriyaki",
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/teriyaki.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/teriyaki.jpg?width=272&force_format=webp",
     ingredients: [
       {
         name: "Pollo o Salmón",
@@ -479,7 +479,7 @@ recipes.lunch = [
   {
     name: "Bacalao a la mexicana",
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/mexicanafish.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/mexicanafish.jpg?width=272&force_format=webp",
     ingredients: [
       {
         name: "Bacalao",
@@ -544,7 +544,7 @@ recipes.dinner = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/soysalmon.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/soysalmon.jpg?width=272&force_format=webp",
   },
   {
     name: "Ensalada caprese",
@@ -575,7 +575,7 @@ recipes.dinner = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/caprese1.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/caprese1.jpg?width=272&force_format=webp",
   },
   {
     name: "Pimientos con feta",
@@ -606,7 +606,7 @@ recipes.dinner = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/peppers.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/peppers.jpg?width=272&force_format=webp",
   },
   {
     name: "Espárragos con queso de cabra",
@@ -637,7 +637,7 @@ recipes.dinner = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/asparaguscheese.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/asparaguscheese.jpg?width=272&force_format=webp",
   },
   {
     name: "Avena",
@@ -686,7 +686,7 @@ recipes.dinner = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/oatmeal.png?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/oatmeal.png?width=272&force_format=webp",
   },
 ];
 recipes.smoothies = [
@@ -713,7 +713,7 @@ recipes.smoothies = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/bluesmoothie.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/bluesmoothie.jpg?width=272&force_format=webp",
   },
   {
     name: "Licuado de manzana",
@@ -738,7 +738,7 @@ recipes.smoothies = [
       },
     ],
     img:
-      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/applesmoothie.jpg?width=272&",
+      "https://akvuseeben.cloudimg.io/v7/https://mynomnoms.netlify.app/imgs/applesmoothie.jpg?width=272&force_format=webp",
   },
 ];
 recipes.empty = [
