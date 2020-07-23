@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import Filtered from "./Filtered";
-import Ingredient from "./Ingredient";
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +11,7 @@ class App extends React.Component {
   }
 
   handleChange = () => {};
-  handleInput = e => {
+  handleInput = (e) => {
     const target = e.target;
     const value = target.value;
     const name = target.name;

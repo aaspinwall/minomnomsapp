@@ -114,9 +114,6 @@ img {
 .mealContainer > div {
   padding-right: 1rem;
 }
-.mealContainer:hover {
-  transform: scale(1.01);
-}
 
 .ingredientBox {
   display: block;

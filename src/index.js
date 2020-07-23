@@ -2,25 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import Nav from "./Nav";
-import Portions from "./Portions";
+import Nav from "./Components/Nav";
+import Portions from "./Components/Portions";
 import Main from "./Components/Main";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Provider } from "react-redux";
-import store from "./Redux/store";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <Nav />
-      <Route path='/' exact={true} component={App} />
-      <Route exact path='/main'>
-        <Main />
-      </Route>
-      <Route path='/portions' exact={true} component={Portions} />
-    </Router>
-  </Provider>,
+  <Router>
+    <Nav />
+    <Route path='/' exact={true} component={App} />
+    <Route exact path='/main'>
+      <Main />
+    </Route>
+    <Route path='/portions' exact={true} component={Portions} />
+  </Router>,
   document.getElementById("root")
 );
 

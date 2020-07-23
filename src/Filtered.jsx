@@ -1,6 +1,6 @@
 import React from "react";
 import { recipes, myMeals } from "./data";
-import Meal from "./Meal";
+import Meal from "./Components/Meal";
 import styled from "styled-components";
 
 const MealWrapper = styled.div`
@@ -27,9 +27,6 @@ const Search = styled.input`
   background: transparent;
   z-index: 999;
 
-  /*   @media screen and (min-width: 1024px) {
-    width: 100%;
-  } */
   @media screen and (min-width: 765px) {
     width: 88%;
   }
@@ -66,12 +63,12 @@ class Filtered extends React.Component {
     this.meals = myMeals;
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ filtered: event.target.value });
     this.meals = myMeals.filter(
-      mealObj =>
+      (mealObj) =>
         mealObj.ingredients.some(
-          ingredient =>
+          (ingredient) =>
             this.find(event.target.value, ingredient.name) ||
             this.find(event.target.value, ingredient.notes)
         ) || this.find(event.target.value, mealObj.name)
@@ -92,20 +89,20 @@ class Filtered extends React.Component {
           onChange={this.handleChange}
           value={this.state.filtered}
         />
-        <form>
+        <div>
           <FilterBox>
             <FilterButton
-              onClick={e => {
-                e.preventDefault();
-                this.meals = recipes.breakfast;
+              id='breakfast'
+              onClick={(e) => {
+                const id = e.target.id;
+                this.meals = recipes[id];
                 this.setState({ filter: "" });
               }}
             >
               Desayunos
             </FilterButton>
             <FilterButton
-              onClick={e => {
-                e.preventDefault();
+              onClick={(e) => {
                 this.meals = recipes.lunch;
                 this.setState({ filter: "" });
               }}
@@ -113,8 +110,7 @@ class Filtered extends React.Component {
               Comidas
             </FilterButton>
             <FilterButton
-              onClick={e => {
-                e.preventDefault();
+              onClick={(e) => {
                 this.meals = recipes.dinner;
                 this.setState({ filter: "" });
               }}
@@ -122,8 +118,7 @@ class Filtered extends React.Component {
               Cenas
             </FilterButton>
             <FilterButton
-              onClick={e => {
-                e.preventDefault();
+              onClick={(e) => {
                 this.meals = recipes.smoothies;
                 this.setState({ filter: "" });
               }}
@@ -131,20 +126,19 @@ class Filtered extends React.Component {
               Smoothies
             </FilterButton>
             <FilterButton
-              onClick={e => {
-                e.preventDefault();
+              onClick={(e) => {
                 this.meals = recipes.breakfast
                   .concat(recipes.dinner)
                   .concat(recipes.smoothies);
                 this.setState({ filter: "" });
               }}
             >
-              Clear
+              Todo
             </FilterButton>
           </FilterBox>
-        </form>
+        </div>
         <MealWrapper>
-          {this.meals.map(meal => (
+          {this.meals.map((meal) => (
             <Meal meal={meal} key={"meal-" + meal.name} />
           ))}
         </MealWrapper>

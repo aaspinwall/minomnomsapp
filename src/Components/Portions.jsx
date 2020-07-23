@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { portions } from "./data";
+import { portions } from "../data";
 
 export default class Portions extends React.Component {
   constructor() {
@@ -9,35 +9,35 @@ export default class Portions extends React.Component {
   }
   componentDidMount() {}
   render() {
-    const verduras = portions.verduras.map(box => {
+    const verduras = portions.verduras.map((box) => {
       return (
         <div>
           <Box>{box}</Box>
         </div>
       );
     });
-    const cereales = portions.cereales.map(box => {
+    const cereales = portions.cereales.map((box) => {
       return (
         <div>
           <Box>{box}</Box>
         </div>
       );
     });
-    const animal = portions.animal.map(box => {
+    const animal = portions.animal.map((box) => {
       return (
         <div>
           <Box>{box}</Box>
         </div>
       );
     });
-    const grasas = portions.grasas.map(box => {
+    const grasas = portions.grasas.map((box) => {
       return (
         <div>
           <Box>{box}</Box>
         </div>
       );
     });
-    const bebidas = portions.bebidas.map(box => {
+    const bebidas = portions.bebidas.map((box) => {
       return (
         <div>
           <Box>{box}</Box>
@@ -74,11 +74,11 @@ export default class Portions extends React.Component {
       <div>
         <MealPortions>
           <h3>Comidas</h3>
-          {lunches().map(e => e)}
+          {lunches().map((e) => e)}
         </MealPortions>
         <MealPortions>
           <h3>Cenas</h3>
-          {dinners().map(e => e)}
+          {dinners().map((e) => e)}
         </MealPortions>
         <Space />
         <BoxHeader
@@ -169,9 +169,9 @@ const BoxHeader = styled(BoxContainer)`
   margin-bottom: 0;
 `;
 const BoxBody = styled(BoxContainer)`
-  display: ${props => (props.show ? "flex" : "none")};
+  display: ${(props) => (props.show ? "flex" : "none")};
   @media screen and (min-width: 768px) {
-    display: ${props => (props.show ? "grid" : "none")};
+    display: ${(props) => (props.show ? "grid" : "none")};
     grid-template-columns: 1fr 1fr;
     text-align: justify;
   }
