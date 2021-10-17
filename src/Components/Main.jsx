@@ -1,53 +1,47 @@
-import React, { useEffect, useState } from "react";
-import { recipes } from "../data";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react"
+import { recipes } from "../data"
+import styled from "styled-components"
 
 export default function Main() {
-  const [recipe, changeRecipe] = useState({});
+  const [recipe, changeRecipe] = useState({})
 
   useEffect(() => {
-    console.log(recipes.breakfast[0]);
-  }, []);
+    console.log(recipes.breakfast[0])
+  }, [])
 
   const handleChange = (e) => {
-    const id = e.target.id;
-    const value = e.target.value;
+    const id = e.target.id
+    const value = e.target.value
 
     if (id.includes("ingredient")) {
-      console.log("reached ingredients");
-      const newIngredients = recipe.ingredients;
-      newIngredients[id.split("_")[1]] = value;
-      changeRecipe({ ...recipe, ingredients: newIngredients });
+      console.log("reached ingredients")
+      const newIngredients = recipe.ingredients
+      newIngredients[id.split("_")[1]] = value
+      changeRecipe({ ...recipe, ingredients: newIngredients })
     } else {
-      changeRecipe({ ...recipe, [id]: value });
+      changeRecipe({ ...recipe, [id]: value })
     }
-  };
+  }
 
   const ingredients = () => {
     if (recipe.ingredients) {
       return recipe.ingredients.map((ingredient, i) => {
-        return (
-          <input
-            placeholder={"ingredient " + i}
-            id={"ingredient_" + i}
-            onChange={handleChange}
-          ></input>
-        );
-      });
+        return <input placeholder={"ingredient " + i} id={"ingredient_" + i} onChange={handleChange}></input>
+      })
     }
-  };
+  }
   const addIngredient = () => {
     if (recipe.ingredients) {
-      const ingredientsCopy = recipe.ingredients;
-      ingredientsCopy.push({});
+      const ingredientsCopy = recipe.ingredients
+      ingredientsCopy.push({})
       changeRecipe({
         ...recipe,
         ingredients: ingredientsCopy,
-      });
+      })
     } else {
-      changeRecipe({ ...recipe, ingredients: [{}] });
+      changeRecipe({ ...recipe, ingredients: [{}] })
     }
-  };
+  }
 
   return (
     <Container>
@@ -73,21 +67,15 @@ export default function Main() {
         </table>
       </div>
       <div className='form'>
-        <input
-          type='text'
-          id='title'
-          placeholder='title'
-          value={recipe.title}
-          onChange={handleChange}
-        />
+        <input type='text' id='title' placeholder='title' value={recipe.title} onChange={handleChange} />
         {ingredients()}
         <button onClick={addIngredient}>+ ingredient</button>
       </div>
     </Container>
-  );
+  )
 }
 
-const Container = styled.div`
+export const Container = styled.div`
   padding-top: 4rem;
   .form {
     display: flex;
@@ -103,4 +91,4 @@ const Container = styled.div`
       border-radius: 10px;
     }
   }
-`;
+`

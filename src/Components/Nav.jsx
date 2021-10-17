@@ -26,9 +26,9 @@ class Nav extends React.Component {
           <Link onClick={this.close} className={menuState} to='/'>
             Home
           </Link>
-          <Link onClick={this.close} className={menuState} to='/portions'>
+          {/* <Link onClick={this.close} className={menuState} to='/portions'>
             Porciones
-          </Link>
+          </Link> */}
 
           <a className={menuState} href='/menus2.pdf'>
             PDF
@@ -36,6 +36,9 @@ class Nav extends React.Component {
           <a onClick={this.close} className={menuState} href='/equivalentes.pdf'>
             Equivalentes
           </a>
+          <Link onClick={this.close} className={menuState} to='/api'>
+            Porciones
+          </Link>
         </div>
       </nav>
     )
