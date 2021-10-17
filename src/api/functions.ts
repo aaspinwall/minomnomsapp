@@ -1,5 +1,4 @@
-import { ingredientType, mealPortionObjectType, UserType } from "../types"
-import { mealsType } from "./../types/index"
+import { mealPortionObjectType, UserType } from "../types"
 import { getAirtableRecords, getAirtableSingle, getAirtableTable } from "./airtable"
 
 export async function getIngredientByID(ingredientID: string) {

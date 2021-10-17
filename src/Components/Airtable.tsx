@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react"
+import styled from "styled-components"
 import { getAirtableRecords, getAirtableSingle, getAirtableTable } from "../api/airtable"
 import { getIngredientByID, getUserWithPortions } from "../api/functions"
-import { ingredientType, UserType } from "../types"
+import { MEALS } from "../data/constants"
+import { IngredientType, ingredientTypeEnum, mealPortionObjectType, mealsType } from "../types"
 import { Container } from "./Main"
-import styled from "styled-components"
+import { Flex, Box } from "reflexbox/styled-components"
 
 const MealWrapper = styled.div`
   display: flex;
@@ -43,27 +45,48 @@ function UserPortions({ user }: any) {
   )
 }
 
-function FetchRecipe({ ingredients }: any) {
-  const [state, setState] = useState<any>()
+function FetchRecipe({ ingredients, mealType }: { ingredients: IngredientType[]; mealType: mealsType }) {
+  const [ingredientsInRecipe, setIngredients] = useState<IngredientType[]>()
+  const [adriana, setAdriana] = useState<mealPortionObjectType | undefined>()
+  const [alejandro, setAlejandro] = useState<mealPortionObjectType | undefined>()
 
   async function fetchRecipies(ingredients: any[]) {
-    return Promise.all(ingredients.filter((e) => e.length > 2).map((x) => getAirtableSingle("ingredients", x)))
+    const ingredientIds = ingredients.filter((e) => e.includes("rec"))
+    console.log(ingredientIds)
+    return Promise.all(ingredientIds.map((x) => getAirtableSingle("ingredients", x)))
   }
 
   useEffect(() => {
     fetchRecipies(ingredients).then((x) => {
-      setState(x)
+      setIngredients(x)
     })
+    getUserWithPortions("adriana").then((x) => setAdriana(x))
+    getUserWithPortions("alejandro").then((x) => setAlejandro(x))
   }, [ingredients])
 
-  return state ? (
+  return ingredientsInRecipe && adriana && alejandro ? (
     <div>
       <>
-        {state.map((ingredient: any) => (
-          <div>{`${ingredient.amount} ${ingredient.amount > 1 ? ingredient.unit + "s" : ingredient.unit} ${
-            ingredient.name
-          }`}</div>
-        ))}
+        {ingredientsInRecipe.map((ingredient: IngredientType) => {
+          const { amount, unit, name, type } = ingredient
+          const multAdriana = adriana[mealType][type]
+          const multAlejandro = alejandro[mealType][type]
+          if (!unit || !amount || !multAlejandro) return
+
+          const note = multAdriana !== multAlejandro
+
+          return (
+            <Box m={1}>
+              <div>{`${amount * multAdriana} ${amount > 1 ? unit + "s" : unit} ${name.toLowerCase()}`}</div>
+              {note && (
+                <>
+                  <div>Alejandro</div>
+                  <div>{`${amount * multAlejandro} ${amount > 1 ? unit + "s" : unit} ${name.toLowerCase()}`}</div>
+                </>
+              )}
+            </Box>
+          )
+        })}
       </>
     </div>
   ) : null
@@ -75,7 +98,7 @@ async function getAllRecipes() {
     [recipe.name]: Object.values(recipe)
       .filter((r) => r !== recipe.name)
       .sort()
-      .map((r: any) => r[0]),
+      .map((r: any) => (r instanceof Array ? r[0] : r)),
   }))
   return formattedRecipes
 }
@@ -89,25 +112,29 @@ function GetRecipes() {
   return state ? (
     <div>
       {state.map((recipe: any) =>
-        Object.entries(recipe).map(([recipeName, ingredients]) => (
-          <>
-            <h2>{recipeName}</h2>
-            <FetchRecipe ingredients={ingredients} />
-          </>
-        )),
+        Object.entries(recipe).map(([recipeName, ingredientsWithType]: any) => {
+          const mealType = ingredientsWithType.filter((y: any) => MEALS.includes(y))
+
+          return (
+            <>
+              <h2>{recipeName}</h2>
+              <FetchRecipe mealType={mealType} ingredients={ingredientsWithType} />
+            </>
+          )
+        }),
       )}
     </div>
   ) : null
 }
 
 export default function Airtable() {
-  async function getPortion(ingredientType: ingredientType) {
+  async function getPortion(ingredientType: ingredientTypeEnum) {
     const [ingredient] = await getAirtableRecords("recipes", ingredientType)
     const portions = await getIngredientByID(ingredient)
     console.log(portions)
   }
 
-  function getPortionSize(ingredient: ingredientType, portion: number) {}
+  function getPortionSize(ingredient: ingredientTypeEnum, portion: number) {}
 
   return (
     <Container>
